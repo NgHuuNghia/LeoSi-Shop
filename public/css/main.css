@@ -1,0 +1,27 @@
+* {
+	
+}
+
+.colum {margin-left: 11%;}
+
+.row {
+    margin-left: -9%;
+}
+
+footer.container {
+    height: 24%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    background: cornflowerblue;
+    bottom: 0;
+    position: absolute;
+}
+
+a.nav-item.nav-link {
+    margin-left: 13px;
+}
+
+.navbar-nav {
+    margin-left: 9%;
+}
