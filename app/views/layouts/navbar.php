@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">LeoSi Shop</a>
+  <a class="navbar-brand" href="<?php echo ROOTURL;?>">LeoSi Shop</a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">TRANG CHỦ<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">SẢN PHẨM</a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL;?>">TRANG CHỦ<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL.'/product/'; ?>">SẢN PHẨM</a>
       <a class="nav-item nav-link" href="#">GAMING GEAR</a>
       <a class="nav-item nav-link" href="#">MÁY CHƠI GAME</a>
       <a class="nav-item nav-link" href="#">GUNDAM</a>
