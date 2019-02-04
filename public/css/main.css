@@ -1,6 +1,11 @@
 * {
     
 }
+
+div#product-current {
+    margin-left: 37px;
+    margin-top: 28px;
+}
 h6#product-recent-view {
     margin-left: 5%;
     margin-top: 16%;

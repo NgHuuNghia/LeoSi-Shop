@@ -12,6 +12,42 @@ class ProductModel extends database {
 	var $color;
 	var $detail; 
 
+	public function getAllProduct() {
+
+		return $this->query2D("SELECT * FROM products");
+	}
+
+	public function getAllProductSort ($sort_type) {
+		//PriceAscending
+		if ($sort_type == 'price-ascending') {
+			return $this->query2D("SELECT * FROM products order by price ASC");
+		}
+		//PriceDescending
+		else if ($sort_type == 'price-descending') {
+			return $this->query2D("SELECT * FROM products order by price DESC");
+		}
+		// new product
+		else if ($sort_type == 'new') {
+			return $this->query2D("SELECT * FROM products order by create_at DESC");
+		}
+		else if ($sort_type == 'old') {
+			return $this->query2D("SELECT * FROM products order by create_at ASC");
+		}
+		else if ($sort_type == 'a-z') {
+			return $this->query2D("SELECT * FROM products order by product_name DESC");
+		}
+		else if ($sort_type == 'z-a') {
+			return $this->query2D("SELECT * FROM products order by product_name ASC");
+		}
+		else if ($sort_type == 'best-selling') {
+			return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id GROUP BY od.product_id ");
+		}
+		else {
+			return $this->query2D("SELECT * FROM products");
+		}
+		
+	}
+
 	public function getDetail($productId) {
 
 		return $this->query("SELECT * FROM products WHERE product_id = $productId ");

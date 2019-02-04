@@ -3,12 +3,22 @@
 class ProductController extends Controller {
 
 	public function index() {
-
-		//models
-
-		//view
+		if(isset($_GET['sort_by'])) {
+			$sort_type = $_GET['sort_by'];
+			$productModel = $this->model('ProductModel');
+			$data = $productModel->getAllProductSort($sort_type);
+			//view
+			$this->view('product/index',$data);
+		}
+		else {
+			
+			//models
+			$productModel = $this->model('ProductModel');
+			$data = $productModel->getAllProduct();
+			//view
+			$this->view('product/index',$data);
+		}
 		
-		$this->view('product/index');
 	}
 
 	public function detail($productId) {
@@ -32,6 +42,9 @@ class ProductController extends Controller {
 				}
 
 				$this->view('product/detail',$data);
+
+				// Get ID product last 
+				$_SESSION['currentIdProduct'] = $productId;
 			}
 			else {
 				$this->view('eror/404');
@@ -40,6 +53,8 @@ class ProductController extends Controller {
 		else {
 			$this->view('eror/404');
 		}
+
+
 		
 	}
 

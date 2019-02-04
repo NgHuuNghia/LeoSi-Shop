@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="<?php echo ROOTURL;?>">TRANG CHỦ<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="<?php echo ROOTURL.'/product/'; ?>">SẢN PHẨM</a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL.'/product/index'; ?>">SẢN PHẨM</a>
       <a class="nav-item nav-link" href="#">GAMING GEAR</a>
       <a class="nav-item nav-link" href="#">MÁY CHƠI GAME</a>
       <a class="nav-item nav-link" href="#">GUNDAM</a>
