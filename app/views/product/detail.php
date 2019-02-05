@@ -26,7 +26,7 @@
 				<div class="form-group">
 
 					<?php 
-						$numColumnTableProduct = 8;
+						$numColumnTableProduct = 9;
 						$sizeArrayData = count($data)/2 ;
 						if ($numColumnTableProduct != $sizeArrayData) { ?>
 					<label id="color">Màu sắc :</label>

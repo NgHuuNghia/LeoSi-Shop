@@ -48,9 +48,38 @@ class ProductModel extends database {
 		
 	}
 
+	public function getAllProductForCategory($category) {
+
+		//head-phone
+		if ($category == 'tai-nghe') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = 'Tai Nghe'");
+		}
+		else if ($category == 'may-choi-game') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = 'Máy chơi game'");
+		}
+		else if ($category == 'phu-kien-dien-thoai') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = 'Phụ kiện điện thoại'");
+		}
+		else if ($category == 'ao-ttg') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = 'Áo TTG'");
+		}
+		else if ($category == 'gaming-gear') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = 'Gaming gear'");
+		}
+		else {
+			return $this->query2D("SELECT * FROM products");
+		}
+		
+	}
+
 	public function getDetail($productId) {
 
 		return $this->query("SELECT * FROM products WHERE product_id = $productId ");
+	}
+	// return [i][data]
+	public function getDetail2D($productId) {
+
+		return $this->query2D("SELECT * FROM products WHERE product_id = $productId ");
 	}
 
 	public function getNameCategory($productId) {

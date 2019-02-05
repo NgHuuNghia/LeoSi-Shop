@@ -7,6 +7,12 @@ class ProductController extends Controller {
 			$sort_type = $_GET['sort_by'];
 			$productModel = $this->model('ProductModel');
 			$data = $productModel->getAllProductSort($sort_type);
+			// last view product
+			 if(isset($_SESSION['currentIdProduct'])) {
+
+			 	$lastViewProduct = $productModel->getDetail2D($_SESSION['currentIdProduct']);
+			 	$data = array_merge($data,$lastViewProduct);
+			 }
 			//view
 			$this->view('product/index',$data);
 		}
@@ -15,9 +21,31 @@ class ProductController extends Controller {
 			//models
 			$productModel = $this->model('ProductModel');
 			$data = $productModel->getAllProduct();
+			// last view product
+			 if(isset($_SESSION['currentIdProduct'])) {
+
+			 	$lastViewProduct = $productModel->getDetail2D($_SESSION['currentIdProduct']);
+			 	$data = array_merge($data,$lastViewProduct);
+			 }
 			//view
 			$this->view('product/index',$data);
 		}
+		
+	}
+
+	public function all($category) {
+
+		//models
+		$productModel = $this->model('ProductModel');
+		$data = $productModel->getAllProductForCategory($category);
+		// last view product
+			 if(isset($_SESSION['currentIdProduct'])) {
+
+			 	$lastViewProduct = $productModel->getDetail2D($_SESSION['currentIdProduct']);
+			 	$data = array_merge($data,$lastViewProduct);
+			 }
+		//view
+		$this->view('product/productForCategory',$data);
 		
 	}
 

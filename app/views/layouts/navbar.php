@@ -7,10 +7,10 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="<?php echo ROOTURL;?>">TRANG CHỦ<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="<?php echo ROOTURL.'/product/index'; ?>">SẢN PHẨM</a>
-      <a class="nav-item nav-link" href="#">GAMING GEAR</a>
-      <a class="nav-item nav-link" href="#">MÁY CHƠI GAME</a>
-      <a class="nav-item nav-link" href="#">GUNDAM</a>
-      <a class="nav-item nav-link" href="#">ÁO IN TTG</a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/gaming-gear";?>">GAMING GEAR</a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/may-choi-game";?>">MÁY CHƠI GAME</a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/tai-nghe";?>">TAI NGHE</a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/ao-ttg";?>">ÁO IN TTG</a>
       <a class="nav-item nav-link" href="#">BẢNG SẢN PHẨM</a>
       <a class="nav-item nav-link" href="#"><i class="fas fa-search"></i></a>
       <a class="nav-item nav-link" href="#">Đăng Nhập</a>
