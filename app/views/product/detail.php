@@ -2,7 +2,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo ROOTURL; ?>">Trang Chủ</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo ROOTURL.'/'.'product'.'/'.$data['category_name']; ?>"><?php echo $data['category_name']; ?></a></li>
+    <li class="breadcrumb-item"><a href="<?php echo ROOTURL.'/product/all/'.$data['category_name']; ?>"><?php echo $data['category_name_vi']; ?></a></li>
     <li class="breadcrumb-item active" aria-current="page"> <?php echo $data['product_name']; ?></li>
   </ol>
 </nav>
@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div id="productPictures">
-				<img src="<?php echo ROOTIMAGESPATH . $data['link_images'] ; ?>" alt="" id="productPictures">
+				<img src="<?php echo ROOTIMAGESPATH .'/product/'. $data['link_images'] ; ?>" alt="" id="productPictures">
 			</div>
 			<div class="row" id="product-feature-images">
 				<div class="col-xs-4" id="images-feature" ><img src="<?php echo ROOTIMAGESPATH . $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>

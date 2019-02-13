@@ -3,7 +3,7 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo ROOTURL; ?>">Trang Chủ</a></li>
     <li class="breadcrumb-item"><a href="<?php echo ROOTURL.'/product/'; ?>">Danh Mục</a></li>
-    <li class="breadcrumb-item active" aria-current="page"> Tất cả sản phẩm </li>
+    <li class="breadcrumb-item active" aria-current="page"> <?php echo $data['categoryNameVI'];?></li>
   </ol>
 </nav>
 <div class="directory">
@@ -18,14 +18,15 @@
 					<li id="dir"><a href="<?php echo ROOTURL."/product/all/ao-ttg";?>">Áo In TTG</a></li>
 					<li id="dir"><a href="<?php echo ROOTURL."/product/all/gaming-gear";?>">Gaming Gear</a></li>
 				</div>
-				<?php 
-					$sizeArrProduct = count($data);
-					$iLastProductView = $sizeArrProduct - 1;
+				<?php
+					$numVarOrther = 2; // categoryName and categoryNameVI
+					$sizeArrProductData = count($data) - $numVarOrther;
+					$iLastProductView = $sizeArrProductData - 1;
 				?>
 				<h6 id="product-recent-view">SẢN PHẨM VỪA XEM</h6>
 
 					<div class="col-xs-4" id="product-current">
-			            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.$data[$iLastProductView]['link_images'];?>" alt="">
+			            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.'/product/'.$data[$iLastProductView]['link_images'];?>" alt="">
 			            <div class="card-body">
 			              <span><a href="<?php echo ROOTURL."/product/detail/". $data[$iLastProductView]['product_id'];?>"><?php echo $data[$iLastProductView]['product_name']?></a></span> </br>
 			              <span id="price"><?php echo  number_format($data[$iLastProductView]['price'], 0, '', ','); ?> đ </span> </br>
@@ -39,7 +40,7 @@
 		</div>
 		<div class="col-md-9">
 			<div class="banner-directory">
-				<img src="<?php echo ROOTIMAGESPATH.'/banerdir.png' ?>" alt="" id="baner-dir">
+				<img src="<?php echo ROOTIMAGESPATH.'/banner/banerdir.png' ?>" alt="" id="baner-dir">
 			</div>
 
 			<div class="top-content-directory">
@@ -76,15 +77,16 @@
 			</div>
 			
 			<div class="product-all">
-				<?php 
+				<?php
+					$sizeArrProduct = $iLastProductView - 1;
 					$numProductInOneRow = 3;
 				?>
-				<?php for($i = 0 ; $i<$sizeArrProduct; $i=$i+$numProductInOneRow) { ?>
+				<?php for($i = 0 ; $i<=$sizeArrProduct; $i=$i+$numProductInOneRow) { ?>
 				<div class="row">
-					<?php for($j = $i,$k=0 ; $j<$sizeArrProduct,$k<$numProductInOneRow;$j++,$k++) {?>
-					<?php if ($j >= $sizeArrProduct) { break;}?>
+					<?php for($j = $i,$k=0 ; $j<=$sizeArrProduct,$k<$numProductInOneRow;$j++,$k++) {?>
+					<?php if ($j > $sizeArrProduct) { break;}?>
 					<div class="col-xs-4" id="product-all">
-			            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.$data[$j]['link_images'];?>" alt="">
+			            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.'/product/'.$data[$j]['link_images'];?>" alt="">
 			            <div class="card-body">
 			              <span><a href="<?php echo ROOTURL."/product/detail/". $data[$j]['product_id'];?>"><?php echo $data[$j]['product_name']?></a></span> </br>
 			              <span id="price"><?php echo  number_format($data[$j]['price'], 0, '', ','); ?> đ </span> </br>
@@ -127,8 +129,10 @@
 	$("#select_sort_type").on("change",function(){
         //Getting Value
          var selectValue = $(this).val();
+         var categoryName = '<?php echo $data['categoryName'];?>';
+         var categoryNameString = '&category_name='+ categoryName;
         //Change view sort
-        window.location.href = "<?php echo ROOTURL.'/product/index?sort_by='?>" +selectValue;
+        window.location.href = "<?php echo ROOTURL.'/product/category?sort_by='?>" +selectValue + categoryNameString;
     });
 </script>
 <?php require_once("../app/views/layouts/footer.php"); ?>

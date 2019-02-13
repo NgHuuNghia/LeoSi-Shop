@@ -37,15 +37,57 @@ class ProductController extends Controller {
 
 		//models
 		$productModel = $this->model('ProductModel');
-		$data = $productModel->getAllProductForCategory($category);
-		// last view product
+		$categoryNameVI = $productModel->getNameCategoryWithVietnameseName($category);
+		$data = array('categoryNameVI' => $categoryNameVI );
+		$data = array_merge($data,array('categoryName' => $category ));
+		$dataProduct = $productModel->getAllProductForCategory($category);
+		$data = array_merge($data,$dataProduct);
+		if ($data != null) {
+			// last view product
+		 	if(isset($_SESSION['currentIdProduct'])) {
+
+			 	$lastViewProduct = $productModel->getDetail2D($_SESSION['currentIdProduct']);
+			 	$data = array_merge($data,$lastViewProduct);
+		 	}
+			//view
+			$this->view('product/productForCategory',$data);
+		}
+		else {
+			$this->view('eror/404');
+		}
+		
+		
+	}
+
+	public function category() {
+		if(isset($_GET['category_name']) && isset($_GET['sort_by'])) {
+			$categoryName = $_GET['category_name'];
+			$sortType = $_GET['sort_by'];
+			$productModel = $this->model('ProductModel');
+			$data = $productModel->getAllProductSortForCategory($categoryName,$sortType);
+			// last view product
 			 if(isset($_SESSION['currentIdProduct'])) {
 
 			 	$lastViewProduct = $productModel->getDetail2D($_SESSION['currentIdProduct']);
 			 	$data = array_merge($data,$lastViewProduct);
 			 }
-		//view
-		$this->view('product/productForCategory',$data);
+			//view
+			$this->view('product/index',$data);
+		}
+		else {
+			
+			//models
+			$productModel = $this->model('ProductModel');
+			$data = $productModel->getAllProductForCategory();
+			// last view product
+			 if(isset($_SESSION['currentIdProduct'])) {
+
+			 	$lastViewProduct = $productModel->getDetail2D($_SESSION['currentIdProduct']);
+			 	$data = array_merge($data,$lastViewProduct);
+			 }
+			//view
+			$this->view('product/index',$data);
+		}
 		
 	}
 
@@ -60,9 +102,9 @@ class ProductController extends Controller {
 			if($data!=false) {
 
 				$categoryName = $productModel->getNameCategory($productId);
-				
-				$data = array_merge($data,$categoryName);
-
+				$categoryNameVI = $productModel->getNameCategoryWithVietnameseName($categoryName);
+				$data = array_merge($data,array('category_name'=>$categoryName));
+				$data = array_merge($data,array('category_name_vi'=>$categoryNameVI));
 				$arrayColorProduct = $productModel->getColorProduct($productId);
 
 				if($arrayColorProduct!=false) {
@@ -80,12 +122,8 @@ class ProductController extends Controller {
 		}
 		else {
 			$this->view('eror/404');
-		}
-
-
-		
+		}	
 	}
-
 
 
 }

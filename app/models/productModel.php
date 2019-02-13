@@ -16,7 +16,7 @@ class ProductModel extends database {
 
 		return $this->query2D("SELECT * FROM products");
 	}
-
+	
 	public function getAllProductSort ($sort_type) {
 		//PriceAscending
 		if ($sort_type == 'price-ascending') {
@@ -48,6 +48,55 @@ class ProductModel extends database {
 		
 	}
 
+	public function getAllProductSortForCategory ($category_name,$sort_type) {
+
+		//change name category no sign to vietnamese
+		if ($category_name == 'tai-nghe') {
+			$category_name =  'Tai Nghe';
+		}
+		else if ($category_name == 'may-choi-game') {
+			$category_name =  'Máy chơi game';
+		}
+		else if ($category_name == 'phu-kien-dien-thoai') {
+			$category_name =  'Phụ kiện điện thoại';
+		}
+		else if ($category_name == 'ao-ttg') {
+			$category_name =  'Áo TTG';
+		}
+		else { //  if ($category_name == 'gaming-gear') 
+			$category_name =  'Gaming gear';
+		}
+		// ** SORT
+		//PriceAscending
+		if ($sort_type == 'price-ascending') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.price ASC");
+		}
+		//PriceDescending
+		else if ($sort_type == 'price-descending') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.price DESC");
+		}
+		// new product
+		else if ($sort_type == 'new') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.create_at DESC");
+		}
+		else if ($sort_type == 'old') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.create_at ASC");
+		}
+		else if ($sort_type == 'a-z') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.product_name DESC");
+		}
+		else if ($sort_type == 'z-a') {
+			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.product_name ASC");
+		}
+		else if ($sort_type == 'best-selling') { 
+			return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' GROUP BY od.product_id ");
+		}
+		else {
+			return $this->query2D("SELECT * FROM products");
+		}
+		
+	}
+
 	public function getAllProductForCategory($category) {
 
 		//head-phone
@@ -67,7 +116,31 @@ class ProductModel extends database {
 			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = 'Gaming gear'");
 		}
 		else {
-			return $this->query2D("SELECT * FROM products");
+			return null;
+		}
+		
+	}
+
+	public function getNameCategoryWithVietnameseName($category) {
+
+		//head-phone
+		if ($category == 'tai-nghe') {
+			return 'Tai Nghe';
+		}
+		else if ($category == 'may-choi-game') {
+			return 'Máy chơi game';
+		}
+		else if ($category == 'phu-kien-dien-thoai') {
+			return 'Phụ kiện điện thoại';
+		}
+		else if ($category == 'ao-ttg') {
+			return 'Áo TTG';
+		}
+		else if ($category == 'gaming-gear') {
+			return 'Gaming gear';
+		}
+		else {
+			return 'Tất cả sản phẩm';
 		}
 		
 	}
@@ -84,7 +157,23 @@ class ProductModel extends database {
 
 	public function getNameCategory($productId) {
 
-		return $this->query("SELECT c.category_name FROM products p join categories c on p.category_id = c.category_id WHERE p.product_id = $productId");
+		$categoryName = $this->query("SELECT c.category_name FROM products p join categories c on p.category_id = c.category_id WHERE p.product_id = $productId");
+		
+		if ($categoryName['category_name'] == 'Tai Nghe') {
+			return 'tai-nghe';
+		}
+		else if ($categoryName['category_name'] == 'Máy chơi game') {
+			return 'may-choi-game';
+		}
+		else if ($categoryName['category_name'] == 'Phụ kiện điện thoại') {
+			return 'phu-kien-dien-thoai';
+		}
+		else if ($categoryName['category_name'] == 'Áo TTG') {
+			return 'ao-ttg';
+		}
+		else  { //if ($categoryName == 'Gaming gear')
+			return 'gaming-gear';
+		}
 	}
 
 	public function getColorProduct($productId) {

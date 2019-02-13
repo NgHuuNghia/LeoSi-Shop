@@ -8,10 +8,10 @@
 	  </ol>
 	  <div class="carousel-inner">
 	    <div class="carousel-item active">
-	      <img class="d-block w-100" src="<?php echo ROOTPATH;?>/public/images/baner1.png" alt="First slide">
+	      <img class="d-block w-100" src="<?php echo ROOTIMAGESPATH;?>/banner/baner1.png" alt="First slide">
 	    </div>
 	    <div class="carousel-item">
-	      <img class="d-block w-100" src="<?php echo ROOTPATH;?>/public/images/baner2.png" alt="Second slide">
+	      <img class="d-block w-100" src="<?php echo ROOTIMAGESPATH;?>/banner/baner2.png" alt="Second slide">
 	    </div>
 	  </div>
 	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -28,13 +28,15 @@
 <section id="categoryTops">
 	<div class="row" id="category">
 		<div class="col-md-4" id="cat">
-			<img src="<?php echo ROOTPATH;?>/public/images/phukien.png" alt="" id="cat">
+			<a href="<?php echo ROOTURL."/product/all/phu-kien-dien-thoai";?>"><img src="<?php echo ROOTIMAGESPATH;?>/product/phukien.png" alt="" id="cat"></a>
 		</div>
 		<div class="col-md-4" id="cat">
-			<img src="<?php echo ROOTPATH;?>/public/images/gear.png" alt="" id="cat">
+      <a href="<?php echo ROOTURL."/product/all/gaming-gear";?>"><img src="<?php echo ROOTIMAGESPATH;?>/product/gear.png" alt="" id="cat"></a>
+			
 		</div>
 		<div class="col-md-4" id="cat">
-			<img src="<?php echo ROOTPATH;?>/public/images/gundam.png" alt="" id="cat">
+      <a href="<?php echo ROOTURL."/product/all/may-choi-game";?>"><img src="<?php echo ROOTIMAGESPATH;?>/product/gundam.png" alt="" id="cat"></a>
+			
 		</div>
 	</div>
 </section>
@@ -52,7 +54,7 @@
         $quantiryProductTop = 4;
         for ( $i = $iStart  ; $i<$quantiryProductTop;$i++ ) { ?>
           <div class="col-xs-3">
-            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.$data[$i]['link_images'];?>" alt="">
+            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.'/product/'.$data[$i]['link_images'];?>" alt="">
             <div class="card-body">
               <span><a href="<?php echo ROOTURL."/product/detail/". $data[$i]['product_id'];?>"><?php echo $data[$i]['product_name']?></a></span> </br>
               <span id="price"><?php echo  number_format($data[$i]['price'], 0, '', ','); ?> đ </span> </br>
@@ -82,7 +84,7 @@
         $quantiryProductTop = 8;
         for ( $i =  $iStart ; $i<$quantiryProductTop;$i++ ) { ?>
           <div class="col-xs-3">
-            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.$data[$i]['link_images'];?>" alt="">
+            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.'/product/'.$data[$i]['link_images'];?>" alt="">
             <div class="card-body">
               <span><a href="<?php echo ROOTURL."/product/detail/". $data[$i]['product_id'];?>"><?php echo $data[$i]['product_name']?></a></span> </br>
               <span id="price"><?php echo  number_format($data[$i]['price'], 0, '', ','); ?> đ </span> </br>
@@ -112,7 +114,7 @@
         $quantiryProductTop = 12;
         for ( $i =  $iStart ; $i<$quantiryProductTop;$i++ ) { ?>
           <div class="col-xs-3">
-            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.$data[$i]['link_images'];?>" alt="">
+            <img class="img-fluid mx-auto d-block" src="<?php echo ROOTIMAGESPATH.'/product/'.$data[$i]['link_images'];?>" alt="">
             <div class="card-body">
               <span><a href="<?php echo ROOTURL."/product/detail/". $data[$i]['product_id'];?>"><?php echo $data[$i]['product_name']?></a></span> </br>
               <span id="price"><?php echo  number_format($data[$i]['price'], 0, '', ','); ?> đ </span> </br>
