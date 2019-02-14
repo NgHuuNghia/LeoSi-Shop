@@ -45,7 +45,32 @@
 				<div class="sort-product">
 					<label for="">Sắp xếp theo:</label>
 					<select class="form-dir" name="sort_type" id="select_sort_type">
-						<option selected="selected"> Default  </option>
+						<option selected="selected"><?php if(isset($_GET['sort_by'])){ switch ($_GET['sort_by']) {
+							case 'new':
+								echo 'Mới Nhất';
+								break;
+							case 'old':
+								echo 'Cũ nhất';
+								break;
+							case 'price-ascending':
+								echo 'Giá: Tăng dần';
+								break;
+							case 'price-descending':
+								echo 'Giá: Giảm dần';
+								break;
+							case 'a-z':
+								echo 'Tên: A-Z';
+								break;
+							case 'z-a':
+								echo 'Tên: Z-A';
+								break;
+							case 'best-selling':
+								echo 'Bán chạy nhất';
+								break;
+							default:
+								echo 'Default';
+								break;
+						} } else {echo 'Default';} ?> </option>
 						<option value="new"> Mới Nhất  </option>
 						<option value="old"> Cũ nhất </option>
 						<option value="price-ascending"> Giá: Tăng dần </option>

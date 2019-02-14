@@ -22,9 +22,9 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<!-- Reponsive -->
-	<link rel="stylesheet" type="text/css" href=#">
+<!-- 	<link rel="stylesheet" type="text/css" href=#"> -->
 	<!--Hide logo 000webhost-->
-	<style>img[alt="www.000webhost.com"]{display:none;}</style>
+<!-- 	<style>img[alt="www.000webhost.com"]{display:none;}</style> -->
 	<!-- Navagation bar  -->
 	<?php require_once("../app/views/layouts/navbar.php"); ?>
 </head>		

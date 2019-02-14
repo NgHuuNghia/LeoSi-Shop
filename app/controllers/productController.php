@@ -33,6 +33,21 @@ class ProductController extends Controller {
 		
 	}
 
+	public function search() {
+		if(isset($_GET['key'])) {
+			$keySearch = $_GET['key'];
+			$productModel = $this->model('ProductModel');
+			$data = $productModel->getDataForKeySearch($keySearch);
+			
+			//view
+			$this->view('product/searchProduct',$data);
+		}
+		else {
+			$this->view('eror/404');
+		}
+		
+	}
+
 	public function all($category) {
 
 		//models
@@ -64,7 +79,11 @@ class ProductController extends Controller {
 			$categoryName = $_GET['category_name'];
 			$sortType = $_GET['sort_by'];
 			$productModel = $this->model('ProductModel');
-			$data = $productModel->getAllProductSortForCategory($categoryName,$sortType);
+			$categoryNameVI = $productModel->getNameCategoryWithVietnameseName($categoryName);
+			$data = array('categoryNameVI' => $categoryNameVI );
+			$data = array_merge($data,array('categoryName' => $categoryName ));
+			$dataProduct = $productModel->getAllProductSortForCategory($categoryName,$sortType);
+			$data = array_merge($data,$dataProduct);
 			// last view product
 			 if(isset($_SESSION['currentIdProduct'])) {
 
@@ -72,7 +91,7 @@ class ProductController extends Controller {
 			 	$data = array_merge($data,$lastViewProduct);
 			 }
 			//view
-			$this->view('product/index',$data);
+			$this->view('product/productForCategory',$data);
 		}
 		else {
 			

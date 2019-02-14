@@ -16,7 +16,10 @@ class ProductModel extends database {
 
 		return $this->query2D("SELECT * FROM products");
 	}
-	
+	public function getDataForKeySearch($keySearch) {
+
+		return $this->query2D("SELECT * FROM products WHERE product_name like '%$keySearch%'");
+	}
 	public function getAllProductSort ($sort_type) {
 		//PriceAscending
 		if ($sort_type == 'price-ascending') {
