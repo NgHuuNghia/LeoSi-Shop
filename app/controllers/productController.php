@@ -130,6 +130,34 @@ class ProductController extends Controller {
 				$data = array_merge($data,$arrayColorProduct);
 				}
 
+				// add shopping cart 
+				if(isset($_POST['btnAddProductShopCart']) &&  isset($_POST['quantity']) ) {
+
+					$quantity = $_POST['quantity'];
+					$productIdPurchase = $productId;
+
+					$productPurchase = array(array('product_id' => $productIdPurchase,
+									  'quantity' => $quantity,) );
+					$numProductPurchase = count($_SESSION["ShoppingCart"]);
+
+					$flagIsExistProduct = 0;
+					for($i = 0 ; $i<$numProductPurchase  ; $i++) {
+
+						if($productPurchase[0]['product_id'] == $_SESSION["ShoppingCart"][$i]['product_id']) {
+							
+							$_SESSION["ShoppingCart"][$i]['quantity'] +=$productPurchase[0]['quantity']; // increase quantity new 
+							$flagIsExistProduct = 1;
+							break;
+						}
+					}
+
+					if ($flagIsExistProduct == 0) {
+						$_SESSION["ShoppingCart"] = array_merge($_SESSION["ShoppingCart"],$productPurchase);
+					}
+					
+
+				}
+				//view
 				$this->view('product/detail',$data);
 
 				// Get ID product last 

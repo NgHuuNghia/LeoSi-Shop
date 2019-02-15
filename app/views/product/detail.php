@@ -13,9 +13,9 @@
 				<img src="<?php echo ROOTIMAGESPATH .'/product/'. $data['link_images'] ; ?>" alt="" id="productPictures">
 			</div>
 			<div class="row" id="product-feature-images">
-				<div class="col-xs-4" id="images-feature" ><img src="<?php echo ROOTIMAGESPATH . $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>
-				<div class="col-xs-4" id="images-feature" ><img src="<?php echo ROOTIMAGESPATH . $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>
-				<div class="col-xs-4" id="images-feature"><img src="<?php echo ROOTIMAGESPATH . $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>
+				<div class="col-xs-4" id="images-feature" ><img src="<?php echo ROOTIMAGESPATH .'/product/'. $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>
+				<div class="col-xs-4" id="images-feature" ><img src="<?php echo ROOTIMAGESPATH .'/product/'. $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>
+				<div class="col-xs-4" id="images-feature"><img src="<?php echo ROOTIMAGESPATH .'/product/'. $data['link_images'] ; ?>" alt="" id="product-feature-images"></div>
 			</div>
 		</div>
 		<div class="col-md-8">
@@ -23,9 +23,10 @@
 				<h4><?php echo $data['product_name'];  ?></h4>
 				<span style="color : #ff3425" id="price"> <?php echo  number_format($data['price'], 0, '', ','); ?> đ </span> </br>
 				<div id="quantity" >Sản phẩm: <span style="color : #ff3425" > <?php if($data['quantity']>=1) echo "Còn hàng"; else echo "Hết hàng"; ?></span> </br></div>
-				<div class="form-group">
 
-					<?php 
+				<form action="<?php echo ROOTURL . '/product/detail/'; echo $data['product_id']; ?>" method="POST">			
+				<div class="form-group">
+					<?php
 						$numColumnTableProduct = 9;
 						$sizeArrayData = count($data)/2 ;
 						if ($numColumnTableProduct != $sizeArrayData) { ?>
@@ -43,12 +44,14 @@
 						?>
 					</select>
                     <div class="quantityPurchased">
-                     <label id="quantityPurchased">Số lượng :</label>
-                   <input class="form-control" type="number" value="1" min="1" id="example-number-input">
+                     <label id="quantityPurchased" >Số lượng :</label>
+                   <input class="form-control" type="number" value="1" min="1" id="example-number-input" name="quantity">
                     </div>
-                    <button type="button" class="btn "> <i class="fas fa-cart-plus"> </i> THÊM VÀO GIỎ HÀNG</button>
+					<?php if($data['quantity']>=1) {?>
+                    <button type="submit" class="btn" id="btnAddProductShopCart" name="btnAddProductShopCart"> <i class="fas fa-cart-plus"> </i> THÊM VÀO GIỎ HÀNG</button>
+					<?php }?>
 				</div>
-
+				</form>
 			</div>
 		</div>
 	</div>

@@ -11,13 +11,13 @@
       <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/may-choi-game";?>">MÁY CHƠI GAME</a>
       <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/tai-nghe";?>">TAI NGHE</a>
       <a class="nav-item nav-link" href="<?php echo ROOTURL."/product/all/ao-ttg";?>">ÁO IN TTG</a>
-      <a class="nav-item nav-link" href="#">
+      <a class="nav-item nav-link" >
         <div onclick="clickButtonSearch()">
           <i class="fas fa-search"></i>
         </div>
       </a>
       <a class="nav-item nav-link" href="#">Đăng Nhập</a>
-      <a class="nav-item nav-link" href="#"><i class="fas fa-cart-plus"></i></a>
+      <a class="nav-item nav-link" href="<?php echo ROOTURL."/cart/index";?>"><i class="fas fa-cart-plus"> (<?php if($_SESSION["ShoppingCart"] != null) {  echo count($_SESSION["ShoppingCart"]); } else { echo '0';} ?>) </i></a>
     </div>
   </div>
 </nav>

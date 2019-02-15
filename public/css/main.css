@@ -2,6 +2,76 @@
     
 }
 
+.notification-pay {
+    margin-bottom: 9%;
+}
+
+i.fa.fa-trash {
+    float: left;
+    margin-top: 11px;
+    margin-left: 10px;
+    color: black;
+}
+
+.list-product-purchase {
+    margin-bottom: 4%;
+}
+
+td.row-cart-price {
+    text-align: center;
+}
+
+td.title-cart-price {
+    text-align: center;
+    font-weight: bold;
+}
+
+img#product-pictures-purchase {
+    width: 100%;
+    height: 100%;
+    border: 1px white;
+}
+
+div#product-pictures-purchase {
+    width: 168px;
+    height: 168px;
+    margin-left: 20%;
+    border: 1px solid white;
+    padding: 1px 1px;
+}
+
+a.continue-purchase {
+    margin-left: 44%;
+}
+
+h7.none-product-purchase {
+    margin-left: 40%;
+}
+
+td.row-cart {
+    height: 165px;
+    text-align: center;
+}
+
+td.row-cart {}
+
+table.table.table-bordered {
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 97%;
+    margin-top: 25px;
+}
+
+tr.list-product {
+    background-color: #ddd;
+    text-align: center;
+}
+
+h4.title-cart {
+    margin-left: 46%;
+    margin-top: 3%;
+}
+
 form.wrap-search-home {
     height: 39px;
     width: 100%;
@@ -158,11 +228,17 @@ h4#des {
 }
 
 button.btn {
-    margin-top: 30px;
+    margin-top: 46px;
     background-color: #fe5252;
     width: 299px;
     height: 51px;
     color: white;
+    margin-left: -170px;
+}
+
+button#btn-pay {
+    margin-top: 0%;
+    margin-left: 77%;
 }
 
 .quantityPurchased {
@@ -171,7 +247,15 @@ button.btn {
 
 input#example-number-input {
     width: 78px;
-    margin-left: 12%;
+    margin-left: 3%;
+    margin-top: -5px;
+    float: left;
+}
+
+input#example-number-input-pay {
+    width: 78px;
+    margin-left: 26%;
+    float: left;
 }
 
 label#quantityPurchased {

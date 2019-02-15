@@ -1,3 +1,4 @@
 # LeoSi-Shop
 --- /sort in category (done)
---- / searching product (slacking) (quest is next)
+--- / searching product (done)
+--- / shopping cart (quest is next)
