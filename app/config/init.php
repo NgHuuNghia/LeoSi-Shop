@@ -4,7 +4,7 @@
 	require_once("../app/core/Controller.php");
 	$_SESSION["ShoppingCart"] = array();
 	session_start();
-	if (!$_SESSION["ShoppingCart"]) {
+	if (!isset($_SESSION["ShoppingCart"])) {
 		
 		$_SESSION["ShoppingCart"] = array();
 	

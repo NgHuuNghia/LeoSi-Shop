@@ -52,7 +52,9 @@
 
   </tbody>
 </table>
+<form action="<?php echo ROOTURL . '/cart/payment';?>" method="POST">	
 <button type="submit" class="btn" id="btn-pay" name="btn-pay">Tiến hành đặt hàng</button>
+</form>
 </div>
 <?php }?>
 <?php require_once("../app/views/layouts/footer.php"); ?>

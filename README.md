@@ -1,4 +1,3 @@
 # LeoSi-Shop
---- /sort in category (done)
---- / searching product (done)
---- / shopping cart (quest is next)
+--- / payment -> login ( -> dia chi ) -> chon dia chi giao hang -> xac nhan thanh toan
+--- / chon tinh -> huyen -> xa

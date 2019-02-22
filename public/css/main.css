@@ -2,6 +2,144 @@
     
 }
 
+.price-total {
+    padding: 9px;
+    border-top: 1px solid #e1e1e1;
+}
+
+.price-all {
+    padding: 9px;
+}
+
+h7#price-provisional {
+    float: right;
+}
+
+h7.payment-price-provisional {}
+
+.price-provisional {
+    margin-top: 35px;
+    border-top: 1px solid #e1e1e1;
+    padding: 7px;
+}
+
+.payment-product-all {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 11px;
+}
+
+.payment-voucher {
+    width: 100%;
+    height: 40px;
+    margin-top: 13px;
+    padding: 10px;
+}
+
+input#payment-voucher {
+    float: left;
+    width: 72%;
+    height: 43px;
+}
+
+h7#product-price-payment {float: right;margin-top: 25px;}
+
+h7#product-name-payment {margin-left: 10px;}
+
+img#product-pictures-payment {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+div#payment-left {
+    border-left: 1px solid #e1e1e1;
+    background-color: #fafafa;
+}
+
+
+
+.payment-right {
+    margin-top: 5%;
+}
+
+.payment-left {
+    margin-top: 5%;
+    margin-left: 7%;
+}
+
+hr.line-payment-page {
+    width: 92%;
+    float: left;
+    margin-bottom: 6%;
+}
+
+.payment-finish {
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+a#back-cart {
+}
+
+.payment-method {
+    margin-top: 10px;
+}
+
+.shipping-method {
+    margin-top: 10%;
+}
+
+.address {margin-top: -6px;}
+
+.payment-the-provincial {
+}
+
+select.address-item {
+    float: left;
+    margin-right: 8px;
+    width: 30%;
+    height: 40px;
+}
+
+input#payment-address {
+    width: 92%;
+    height: 40px;
+    margin-top: 10px;
+}
+
+input#payment-email {
+    width: 69%;
+    height: 40px;
+}
+
+input#payment-numberphone {
+    float: right;
+    margin-right: 8%;
+    width: 22%;
+    height: 40px;
+}
+
+input#payment-name {
+    width: 92%;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 2%;
+}
+
+ol#payment {
+    background-color: white;
+    margin-left: -2%;
+    margin-top: -1%;
+}
+
+.payement-main {
+    background-color: white;
+}
+
+h3.title-name-shop {
+}
+
 .notification-pay {
     margin-bottom: 9%;
 }
@@ -234,6 +372,16 @@ button.btn {
     height: 51px;
     color: white;
     margin-left: -170px;
+}
+
+button#btnUseVoucher {width: 101px;height: 43px;background-color: #c8c8c8;float: right;margin-top: 0px;}
+
+button#btnPaymentFinish {
+    background: blue;
+    float: right;
+    margin-top: -21px;
+    margin-right: 60px;
+    width: 201px;
 }
 
 button#btn-pay {
