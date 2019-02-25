@@ -43,7 +43,7 @@ class ProductModel extends database {
 			return $this->query2D("SELECT * FROM products order by product_name ASC");
 		}
 		else if ($sort_type == 'best-selling') {
-			return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id GROUP BY od.product_id ");
+			return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orderdetails od join products p on od.product_id = p.product_id GROUP BY od.product_id ");
 		}
 		else {
 			return $this->query2D("SELECT * FROM products");
@@ -92,7 +92,7 @@ class ProductModel extends database {
 			return $this->query2D("SELECT * FROM products p join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' order by p.product_name ASC");
 		}
 		else if ($sort_type == 'best-selling') { 
-			return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' GROUP BY od.product_id ");
+			return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orderdetails od right join products p on od.product_id = p.product_id  join categories c on p.category_id = c.category_id WHERE c.category_name = '$category_name' GROUP BY od.product_id ");
 		}
 		else {
 			return $this->query2D("SELECT * FROM products");
@@ -185,15 +185,15 @@ class ProductModel extends database {
 	}
 
 	public function getTopTrendProductHeadphone() {
-		return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id AND od.category_id=1 GROUP BY od.product_id LIMIT 4");
+		return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orderdetails od join products p on od.product_id = p.product_id AND p.category_id=1 GROUP BY od.product_id LIMIT 4");
 	}
 
 	public function getTopTrendMachineGame() {
-		return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id AND od.category_id=2 GROUP BY od.product_id LIMIT 4");
+		return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orderdetails od join products p on od.product_id = p.product_id AND p.category_id=2 GROUP BY od.product_id LIMIT 4");
 	}
 
 	public function getTopTrendShirt() {
-		return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orders od join products p on od.product_id = p.product_id AND od.category_id=3 GROUP BY od.product_id LIMIT 4");
+		return $this->query2D("SELECT p.*,COUNT(od.product_id) FROM orderdetails od join products p on od.product_id = p.product_id AND p.category_id=3 GROUP BY od.product_id LIMIT 4");
 	}
 }
 

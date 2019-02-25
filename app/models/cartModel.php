@@ -11,6 +11,7 @@ class CartModel extends database {
 
 		return $this->query2D("SELECT * FROM products WHERE product_id = $productId ");
 	}
+	
 
 }
 

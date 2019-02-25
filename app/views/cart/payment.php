@@ -27,75 +27,47 @@
 				<div class="information-payment">
 					<h5>Thông tin giao hàng</h5>
 					Bạn đã có tài khoản? <a href=""> Đăng nhập</a>
-					<div class="customer">
-						<input type="text" placeholder="Họ và tên" id="payment-name"> </br>
-						<input type="email" placeholder="email" id="payment-email">
-						<input type="tel" size="10" placeholder="số điện thoại" id="payment-numberphone" name="paymentNumberPhone" > </br>
-						<input type="text" placeholder="địa chỉ" id="payment-address">
-						<!-- error no save clipbroad input tel => add [ -->
-						<div class="form-group">
-				            <p></p><input class="form-control" id="inputPhone" maxlength=
-				            "9" name="phone" required="required" size="9" title="" type="tel"
-				            value="" hidden="true">
-				        </div>
-				        <!-- ] -->
-						<div class="address">
 
-							<div class="payment-the-provincial">
-								<select class="address-item">
-									<option data-code="null" value="null" >  Chọn tỉnh / thành </option>
-									<option data-code="HC" value="50" >Hồ Chí Minh</option>
-									<option data-code="HI" value="1" >Hà Nội</option>
-								</select>
+					<form action="<?php echo ROOTURL.'/cart/orderReceived'; ?>" method="POST">
+
+							<div class="customer">
+								<input type="text" placeholder="Họ và tên" name="name" id="payment-name"> </br>
+								<input type="email" placeholder="email" name="email" id="payment-email">
+								<input type="tel" size="10" placeholder="số điện thoại" id="payment-numberphone" name="paymentNumberPhone" > </br>
+								<input type="text" placeholder="địa chỉ" name="addressRevice" id="payment-address"> </br>
+								( Ví dụ : 235B, Nguyễn Văn Cừ, Phường Nguyễn Cư Trinh, Quận 1, TP.HCM)
+							</div>
+							<div class="shipping-method">
+								<h5>Phương thức vận chuyển</h5>
+								<!-- <form> -->
+								    <label class="radio-inline">
+								      <input type="radio" name="shippingMethod" checked>Giao hàng tận nơi
+								    </label>
+								<!-- </form> -->
+							</div>
+							<div class="payment-method">
+								<h5>Phương thức thanh toán</h5>
+								<!-- <form> -->
+								    <label class="radio-inline">
+								      <input type="radio" name="paymentMethod" checked>Thanh toán khi giao hàng (COD)
+								    </label> </br>	
+								   <!--  <label class="radio-inline">
+								      <input type="radio" name="paymentMethod">Chuyển khoản qua ngân hàng
+								    </label> -->
+								<!-- </form> -->
 							</div>
 
-							<div class="payment-district">
-								<select class="address-item">
-									<option data-code="null" value="null" >  Chọn Quận / huyện </option>
-									<option data-code="HC" value="50" >Quận 1</option>
-									<option data-code="HI" value="1" >Quận 2</option>
-								</select>
-							</div>
-
-							<div class="payment-commune">
-								<select class="address-item">
-									<option data-code="null" value="null" >  Chọn Phường / xã </option>
-									<option data-code="HC" value="50" >Phường 1</option>
-									<option data-code="HI" value="1" >Phường 2</option>
-								</select>
-							</div>
-							
 						</div>
 
-					</div>
-					<div class="shipping-method">
-						<h5>Phương thức vận chuyển</h5>
-						<form>
-						    <label class="radio-inline">
-						      <input type="radio" name="shippingMethod" checked>Giao hàng tận nơi
-						    </label>
-						</form>
-					</div>
-					<div class="payment-method">
-						<h5>Phương thức thanh toán</h5>
-						<form>
-						    <label class="radio-inline">
-						      <input type="radio" name="paymentMethod" checked>Thanh toán khi giao hàng (COD)
-						    </label> </br>
-						   <!--  <label class="radio-inline">
-						      <input type="radio" name="paymentMethod">Chuyển khoản qua ngân hàng
-						    </label> -->
-						</form>
-					</div>
-				</div>
+						<div class="payment-finish">
 
-				<div class="payment-finish">
+							<a id="back-cart" href="<?php echo ROOTURL."/cart/index";?>">< Giỏ Hàng</a>
 
-					<a id="back-cart" href="<?php echo ROOTURL."/cart/index";?>">< Giỏ Hàng</a>
-
-					 <button type="submit" class="btn" id="btnPaymentFinish" name="btnPaymentFinish"> Hoàn tất đơn hàng</button>
-				
-				</div>
+							 <button type="submit" class="btn" id="btnPaymentFinish" name="btnPaymentFinish"> Hoàn tất đơn hàng</button>
+						
+						</div>
+					
+					</form>
 
 				<!-- line -->
 				<hr class="line-payment-page">
@@ -117,7 +89,8 @@
 									
 									<h7 id="product-name-payment">
 										<?php echo $data[$i]['product_name']; ?>
-									</h7>
+									</h7> (<?php echo $data[$i]['quantity']; ?>)
+
 									<h7 id="product-price-payment">
 										<td class="row-cart"> <?php echo  number_format($data[$i]['priceTotal'], 0, '', ','); ?> đ  </td>
 									</h7>

@@ -31,6 +31,7 @@ class database {
 	    	}
 	    	return $data[0];
 	    }
+
 	}
 
 	public function query2D($query, $params = array()) {
