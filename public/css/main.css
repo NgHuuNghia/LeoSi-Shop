@@ -2,6 +2,29 @@
     
 }
 
+.order-detail {
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+.product-order-recevied {
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+.order-bill {}
+
+.order-bill {
+    border: 1px solid whitesmoke;
+    background-color: #d6e8f9;
+    padding: 24px;
+    margin-top: 5%;
+}
+
+.order-recevied {
+    background-color: white;
+}
+
 .price-total {
     padding: 9px;
     border-top: 1px solid #e1e1e1;
@@ -274,6 +297,9 @@ div#product-all {
 
 .row {
     width: 100%;
+}
+
+div#order-re {
 }
 
 .product-all {

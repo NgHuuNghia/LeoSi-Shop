@@ -140,7 +140,7 @@ class CartController extends Controller
 			$shippingMethod = "giao hàng tận nơi";
 			$paymentMethod = "thanh toán khi nhận hàng";
 			$transportFee = 40000;
-			$priceTotal = $priceTotalAllProduct;
+			$priceTotal = $priceTotalAllProduct + $transportFee;
 			$lastIdOrder = $OderModel->insertOrder($name,$email,$numberPhone,$address,$shippingMethod,$paymentMethod,$transportFee,$priceTotal);
 			$oderDay = $OderModel->getOrderDay($lastIdOrder);
 			// add  oderdetail
@@ -150,18 +150,26 @@ class CartController extends Controller
 				$OderModel->insertOrderDetail($lastIdOrder,$productId,$quantity);
 			}
 			// orderReceived page
+			$OrderReceivedData = array(); 
 			$OrderReceivedData = $data ;
 			$OrderReceivedData = array_merge($OrderReceivedData, array('transport_fee' => $transportFee));
 			$OrderReceivedData = array_merge($OrderReceivedData, array('price_total' => $priceTotal));
 			$OrderReceivedData = array_merge($OrderReceivedData, array('payment_method' => $paymentMethod));
 			$OrderReceivedData = array_merge($OrderReceivedData, array('order_day' => $oderDay));
 			$OrderReceivedData = array_merge($OrderReceivedData, array('order_id' => $lastIdOrder));
-			 var_dump($OrderReceivedData);
 			 // load page -> 404
 			// reset shopping cart
-			//$_SESSION["ShoppingCart"] = array();
+			if($_SESSION["ShoppingCart"] == null ) {
+
+				$this->view('eror/404');
+			} else {
+
+				$_SESSION["ShoppingCart"] = array();
+				$this->view('order/orderReceived',$OrderReceivedData);
+			}
+			
 			//view
-			$this->view('order/orderReceived',$OrderReceivedData);
+			
 
 		}
 		else {
