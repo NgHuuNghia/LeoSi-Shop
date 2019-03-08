@@ -173,9 +173,8 @@ class CartController extends Controller
 
 		}
 		else {
-			// $paymentCartUrl = ROOTURL.'/cart/payment';
-			// header("Location: $paymentCartUrl");
-			echo "khong ok ";
+			 $paymentCartUrl = ROOTURL.'/cart/payment';
+			 header("Location: $paymentCartUrl");
 		}
 	}
 }
